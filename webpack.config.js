@@ -20,6 +20,10 @@ const baseConfig = {
                 test: /\.css$/i,
                 use: ['style-loader', 'css-loader'],
             },
+            {
+                test: /\.svg$/i,
+                loader:  'svg-inline-loader'
+            },
         ],
     },
     resolve: {

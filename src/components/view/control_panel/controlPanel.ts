@@ -18,22 +18,27 @@ class ControlPanel {
         const createWrapper = document.createElement('div');
         createWrapper.className = 'create_wrapper';
         const crNameInput = document.createElement('input');
+        crNameInput.className = 'create_name_input';
         const crColorinput = document.createElement('input');
         crColorinput.type = 'color';
         crColorinput.value = '#FFFFFF';
+        crColorinput.className = 'create_color_input';
         const createButton = document.createElement('button');
         createButton.textContent = 'CREATE';
+        createButton.className = 'create_button';
         createWrapper.append(crNameInput, crColorinput, createButton);
         panelWrapper.append(createWrapper);
-
         const updateWrapper = document.createElement('div');
         updateWrapper.className = 'upadate_wrapper';
         const updNameInput = document.createElement('input');
+        updNameInput.className = 'update_name_input';
         const updColorinput = document.createElement('input');
         updColorinput.type = 'color';
         updColorinput.value = '#FFFFFF';
+        updColorinput.className = 'update_color_input';
         const updateButton = document.createElement('button');
         updateButton.textContent = 'UPDATE';
+        updateButton.className = 'update_button';
         updateWrapper.append(updNameInput, updColorinput, updateButton);
         panelWrapper.append(updateWrapper);
 
@@ -53,6 +58,11 @@ class ControlPanel {
         panelWrapper.append(generateCarsButton);
 
         app?.append(panelWrapper);
+    }
+
+    clearFields(type: string) {
+        (<HTMLInputElement>document.querySelector(`.${type}_name_input`)).value = '';
+        (<HTMLInputElement>document.querySelector(`.${type}_color_input`)).value = '#ffffff';
     }
 }
 
