@@ -1,5 +1,5 @@
-import App from './components/app';
+import Model from './components/model/model';
 import './global.css';
 
-const app: App = new App();
-app.draw();
+const app: Model = new Model();
+app.start();

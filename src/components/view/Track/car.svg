@@ -1,16 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Async Race</title>
-</head>
-<body>
-    <div id="app"></div>
-</body>
-<template id="car_svg">
-    <svg class="car" viewBox="-35.034 52.602 782.552 357.596" width="120" height="120">
+<svg class="car" viewBox="-35.034 52.602 782.552 357.596" width="120" height="120">
         <rect id="back_left_wheel" fill-rule="evenodd" rx="8.585" ry="8.585" height="78.696" width="27.775" y="623.04" x="16.287" fill="#000000" transform="matrix(0, 1, -1, 0, 748.137024, 51.976753)"></rect>
         <rect id="back_ricght_wheel" fill-rule="evenodd" rx="8.585" ry="8.585" height="78.696" width="27.775" y="613.04" x="311.29" fill="#000000" transform="matrix(0, 1, -1, 0, 748.137024, 51.976753)"></rect>
         <rect id="front_right_wheel" fill-rule="evenodd" rx="8.585" ry="8.585" height="78.696" width="27.775" y="98.038" x="318.79" fill="#000000" transform="matrix(0, 1, -1, 0, 748.137024, 51.976753)"></rect>
@@ -34,21 +22,4 @@
         <path id="left_window" d="M 316.677 -31.257 C 316.677 -31.257 333.213 44.338 333.213 44.338 C 333.213 44.338 333.213 186.078 330.851 188.438 C 328.488 190.8 309.59 230.959 309.59 230.959 C 309.59 230.959 314.314 -26.531 316.677 -31.261 L 316.677 -31.257 Z" fill="#444444" transform="matrix(0, 1, -1, 0, 421.250519, -221.552505)"></path>
         <path id="contour" d="M 66.931 4.609 C 64.598 30.276 51.94 448.059 71.597 447.949 C 141.453 474.416 293.217 471.533 350.117 440.948 C 367.647 440.877 357.116 23.268 354.783 -2.392" stroke="#000" stroke-width="1pt" fill="none" transform="matrix(0, 1, -1, 0, 442.215607, 21.395777)"></path>
         <path id="right_window" d="M 330.846 233.326 C 330.846 233.326 314.31 308.921 314.31 308.921 C 314.31 308.921 314.31 450.661 316.672 453.021 C 319.035 455.383 337.933 495.542 337.933 495.542 C 337.933 495.542 333.209 238.052 330.846 233.322 L 330.846 233.326 Z" fill="#444444" transform="matrix(0, 1, -1, 0, 690.553467, 38.310486)"></path>
-      </svg>
-</template>
-<template id="finish">
-    <svg width="160" height="120" xmlns="http://www.w3.org/2000/svg">
-        <rect height="20" width="20" y="0" x="0" fill="#000000"/>
-        <rect height="20" width="20" y="20" x="0" fill="#ffffff"/>
-        <rect height="20" width="20" y="40" x="0" fill="#000000"/>
-        <rect height="20" width="20" y="60" x="0" fill="#ffffff"/>
-        <rect height="20" width="20" y="80" x="0" fill="#000000"/>
-        <rect height="20" width="20" y="100" x="0" fill="#ffffff"/>
-        <rect height="20" width="20" y="0" x="20" fill="#ffffff"/>
-        <rect height="20" width="20" y="20" x="20" fill="#000000"/>
-        <rect height="20" width="20" y="40" x="20" fill="#ffffff"/>
-        <rect height="20" width="20" y="60" x="20" fill="#000000"/>
-        <rect height="20" width="20" y="80" x="20" fill="#ffffff"/>
-        <rect height="20" width="20" y="100" x="20" fill="#000000"/>
-    </svg>
-</template>
+</svg>
