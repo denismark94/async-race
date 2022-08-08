@@ -1,0 +1,42 @@
+.track_wrapper {
+    display: flex;
+    flex-direction: column;
+}
+
+.car_wrapper {
+    width: 100%;
+    border-top: 2px dashed white;
+    border-bottom: 2px dashed white;
+}
+
+.car_wrapper span {
+    color: #ffffff ;
+}
+
+.car_wrapper button {
+    margin: 5px;
+}
+.line_wrapper {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+svg {
+    position: relative;
+}
+
+.moving {
+    animation-name: drive;
+    animation-duration: 1s;
+}
+
+@keyframes drive {
+    0% {
+        left: 0;
+    }
+
+    100% {
+        left: calc(100% - 120px);
+    }
+}

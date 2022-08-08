@@ -1,0 +1,25 @@
+{
+    "brands": [
+        "BMW",
+        "Audi",
+        "Mersedes",
+        "Lada",
+        "VolksWagen",
+        "Aston Martin",
+        "Jeep",
+        "Alpha Romeo",
+        "Toyota",
+        "Ford"
+    ],
+    "models": [
+        "X6",
+        "X7",
+        "SLK",
+        "Wrangler",
+        "2106",
+        "Vantage",
+        "Q7",
+        "Mark II",
+        "F150"
+    ]
+}
