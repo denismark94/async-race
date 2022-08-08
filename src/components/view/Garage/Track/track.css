@@ -40,3 +40,9 @@ svg {
         left: calc(100% - 120px);
     }
 }
+
+.pagination_buttons_wrapper {
+    display: flex;
+    justify-content: center;
+    margin: 10px;
+}

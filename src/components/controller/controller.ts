@@ -1,8 +1,9 @@
 import ICar from './ICar';
+import IWinner from './IWinner';
 
 class Controller {
     cars: ICar[];
-    winners: object[];
+    winners: IWinner[];
     baseURL: string;
     constructor() {
         this.baseURL = 'http://localhost:3000';
@@ -14,51 +15,59 @@ class Controller {
         fetch(`${this.baseURL}/garage`)
             .then((response) => response.json())
             .then((data) => {
+                this.cars = [];
                 for (const car of data) {
                     this.cars.push(<ICar>car);
                 }
                 callback(this.cars);
             })
-            .catch((err) => console.log(err));
+            .catch((err) => console.error(err));
     }
 
-    getWinners(baseURL: string) {
-        fetch(`${baseURL}/winners`)
+    getWinners(callback: (data: IWinner[]) => void) {
+        this.winners = [];
+        fetch(`${this.baseURL}/winners`)
             .then((response) => response.json())
             .then((data) => {
+                const promises = [];
+                const temp = new Map();
                 for (const winner of data) {
-                    this.winners.push(<object>winner);
+                    const id = (<IWinner>winner).id;
+                    promises.push(fetch(`${this.baseURL}/garage/${id}`).then((response) => response.json()));
+                    temp.set(id, winner);
                 }
+                Promise.all(promises)
+                    .then((response) => {
+                        for (const car of response) {
+                            this.winners.push(<IWinner>{ ...car, ...temp.get((<ICar>car).id) });
+                        }
+                        callback(this.winners);
+                    })
+                    .catch((err) => console.error(err));
             })
-            .catch((err) => console.log(err));
+            .catch((err) => console.error(err));
     }
 
     addCar(item: ICar) {
-        fetch(`${this.baseURL}/garage`, {
+        return fetch(`${this.baseURL}/garage`, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(item),
-        })
-            .then((res) => console.log(res))
-            .catch((err) => console.log(err));
+        });
     }
 
     updateCar(item: ICar) {
-        fetch(`${this.baseURL}/garage/${item.id}`, {
+        return fetch(`${this.baseURL}/garage/${item.id}`, {
             method: 'PATCH',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(item),
-        })
-            .then((res) => console.log(res))
-            .catch((err) => console.log(err));
+        });
     }
 
     deleteCar(id: number) {
-        fetch(`${this.baseURL}/garage/${id}`, {
+        return fetch(`${this.baseURL}/garage/${id}`, {
             method: 'DELETE',
-        })
-            .then((res) => console.log(res))
-            .catch((err) => console.log(err));
+        });
     }
 
     getCar(id: number) {
