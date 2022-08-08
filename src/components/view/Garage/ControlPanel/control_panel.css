@@ -1,0 +1,34 @@
+button {
+    background-color: lightgreen;
+    border: 1px solid black;
+    border-radius: 3px;
+    height: 25px;
+    margin: 3px;
+}
+
+button:hover {
+    cursor: pointer;
+}
+
+.generate_button {
+    background-color: lightblue;
+}
+
+.update_wrapper {
+    display: flex;
+    align-items: center;
+}
+.create_wrapper {
+    display: flex;
+    align-items: center;
+}
+
+.control_panel_wrapper input {
+    height: 20px;
+    margin: 3px;
+}
+
+.control_panel_wrapper input[type=color] {
+    height: 25px;
+    cursor: pointer;
+}

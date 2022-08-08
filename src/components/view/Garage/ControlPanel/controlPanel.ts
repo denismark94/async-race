@@ -5,16 +5,6 @@ class ControlPanel {
         const app = document.getElementById('app');
         const panelWrapper = document.createElement('div');
         panelWrapper.className = 'control_panel_wrapper';
-
-        const toGarageButton = document.createElement('button');
-        const toWinnersButton = document.createElement('button');
-        toGarageButton.textContent = 'TO GARAGE';
-        toGarageButton.className = 'garage';
-        toWinnersButton.textContent = 'TO WINNERS';
-        toWinnersButton.className = 'winners';
-        panelWrapper.append(toGarageButton);
-        panelWrapper.append(toWinnersButton);
-
         const createWrapper = document.createElement('div');
         createWrapper.className = 'create_wrapper';
         const crNameInput = document.createElement('input');
@@ -29,7 +19,7 @@ class ControlPanel {
         createWrapper.append(crNameInput, crColorinput, createButton);
         panelWrapper.append(createWrapper);
         const updateWrapper = document.createElement('div');
-        updateWrapper.className = 'upadate_wrapper';
+        updateWrapper.className = 'update_wrapper';
         const updNameInput = document.createElement('input');
         updNameInput.className = 'update_name_input';
         const updColorinput = document.createElement('input');
@@ -58,11 +48,24 @@ class ControlPanel {
         panelWrapper.append(generateCarsButton);
 
         app?.append(panelWrapper);
+        this.disableUpdateFields();
     }
 
     clearFields(type: string) {
         (<HTMLInputElement>document.querySelector(`.${type}_name_input`)).value = '';
         (<HTMLInputElement>document.querySelector(`.${type}_color_input`)).value = '#ffffff';
+    }
+
+    enableUpdateFields() {
+        (<HTMLInputElement>document.querySelector('.update_name_input')).disabled = false;
+        (<HTMLInputElement>document.querySelector('.update_color_input')).disabled = false;
+        (<HTMLInputElement>document.querySelector('.update_button')).disabled = false;
+    }
+
+    disableUpdateFields() {
+        (<HTMLInputElement>document.querySelector('.update_name_input')).disabled = true;
+        (<HTMLInputElement>document.querySelector('.update_color_input')).disabled = true;
+        (<HTMLInputElement>document.querySelector('.update_button')).disabled = true;
     }
 }
 

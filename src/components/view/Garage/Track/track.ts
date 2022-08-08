@@ -1,31 +1,82 @@
 import './track.css';
-import ICar from '../../controller/ICar';
+import ICar from '../../../controller/ICar';
 
 class Track {
     amountOfCars: number;
     selectedID: number;
+    amountOfPages: number;
+    currentPage: number;
+    garage: ICar[];
     constructor() {
         const app = <HTMLDivElement>document.getElementById('app');
-        const trackWrapper = document.createElement('div');
-        trackWrapper.className = 'track_wrapper';
+        const garageWrapper = document.createElement('div');
+        garageWrapper.className = 'garage_wrapper';
+
         const h2 = document.createElement('h2');
         h2.textContent = 'Garage (num)';
         const h3 = document.createElement('h3');
         h3.textContent = 'Page #num';
-        trackWrapper.append(h2);
-        trackWrapper.append(h3);
-        app.append(trackWrapper);
+
+        const trackWrapper = document.createElement('div');
+        trackWrapper.className = 'track_wrapper';
+
+        const pagbuttonsWrapper = document.createElement('div');
+        pagbuttonsWrapper.className = 'pagination_buttons_wrapper';
+        const prevButton = document.createElement('button');
+        prevButton.className = 'prev_btn';
+        prevButton.textContent = 'PREV';
+        const nextButton = document.createElement('button');
+        nextButton.className = 'next_btn';
+        nextButton.textContent = 'NEXT';
+        pagbuttonsWrapper.append(prevButton);
+        pagbuttonsWrapper.append(nextButton);
+
+        garageWrapper.append(h2);
+        garageWrapper.append(h3);
+        garageWrapper.append(trackWrapper);
+        garageWrapper.append(pagbuttonsWrapper);
+        app.append(garageWrapper);
         this.amountOfCars = 0;
+        this.amountOfPages = 0;
+        this.garage = [];
+        this.currentPage = 0;
         this.selectedID = -1;
     }
 
-    drawCars(data: ICar[], callback: () => void) {
-        const trackWrapper = <HTMLDivElement>document.querySelector('.track_wrapper');
-        data.forEach((car) => {
-            trackWrapper.append(this.generateCar(car));
-        });
-        callback();
+    drawCars(data: ICar[], addListeners: (carElement: HTMLDivElement) => void) {
+        this.garage = data;
         this.amount = data.length;
+        const trackWrapper = <HTMLDivElement>document.querySelector('.track_wrapper');
+        trackWrapper.innerHTML = '';
+        data.forEach((car) => {
+            const carElement = this.generateCar(car);
+            addListeners(carElement);
+            trackWrapper.append(carElement);
+        });
+        while (this.currentPage * 7 >= this.amount) {
+            this.page -= 1;
+        }
+        this.showCurrentPage();
+    }
+
+    showCurrentPage() {
+        const trackWrapper = <HTMLDivElement>document.querySelector('.track_wrapper');
+        trackWrapper.querySelectorAll('.car_wrapper').forEach((wrapper) => wrapper.classList.add('disabled'));
+        for (let i = this.currentPage * 7; i < Math.min(7 * (this.currentPage + 1), this.garage.length); i += 1) {
+            (<HTMLDivElement>document.getElementById(`${this.garage[i].id}`)).classList.remove('disabled');
+        }
+        const h3 = <HTMLHRElement>document.querySelector('h3');
+        h3.textContent = `Page #${this.currentPage + 1}`;
+    }
+
+    set page(page: number) {
+        if (page * 7 >= this.amount || page < 0) return;
+        this.currentPage = page;
+        this.showCurrentPage();
+    }
+
+    get page() {
+        return this.currentPage;
     }
 
     generateCar(carData: ICar) {
@@ -103,12 +154,6 @@ class Track {
     get amount() {
         return this.amountOfCars;
     }
-
-    // updateAmountOfcars(amount: number) {
-    //     this.amount = amount;
-    //     const h2 = <HTMLHRElement>document.querySelector('h2');
-    //     h2.textContent = `Garage (${amount})`;
-    // }
 }
 
 export default Track;
