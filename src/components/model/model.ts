@@ -1,6 +1,7 @@
 import View from '../view/view';
 import Controller from '../controller/controller';
 import ICar from '../controller/ICar';
+
 class Model {
     view: View;
     controller: Controller;
@@ -44,6 +45,22 @@ class Model {
             this.controller.updateCar(car);
             this.view.track.updateCar(car, (carElement) => this.assignCarListeners(carElement));
             this.view.controlPanel.clearFields('update');
+        });
+
+        const generateButton = <HTMLButtonElement>document.querySelector('.generate_button');
+        generateButton.addEventListener('click', () => {
+            const brands = ['BMW', 'Audi', 'Mersedes', 'Lada', 'VolksWagen', 'Jeep', 'Toyota', 'Ford'];
+            const models = ['X6', 'X7', 'SLK', 'Wrangler', '2106', 'Vantage', 'Q7', 'Mark II', 'F150'];
+            let amount = this.view.track.amount;
+            for (let i = 0; i < 2; i += 1) {
+                const color = `#${Math.floor(Math.random() * 16777215).toString(16)}`;
+                console.log(color);
+                const brand = brands[Math.floor(Math.random() * brands.length)];
+                const model = models[Math.floor(Math.random() * models.length)];
+                const car = { name: `${brand} ${model}`, color: color, id: (amount += 1) };
+                this.controller.addCar(car);
+                this.view.track.drawCar(car, (carElement) => this.assignCarListeners(carElement));
+            }
         });
     }
 

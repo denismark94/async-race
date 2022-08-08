@@ -24,6 +24,10 @@ const baseConfig = {
                 test: /\.svg$/i,
                 loader:  'svg-inline-loader'
             },
+            {
+                test: /\.json$/i,
+                loader: 'file-loader'
+            },
         ],
     },
     resolve: {

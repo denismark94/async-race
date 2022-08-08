@@ -51,7 +51,7 @@ class ControlPanel {
         resetButton.textContent = 'RESET';
         resetButton.className = 'reset';
         generateCarsButton.textContent = 'GENERATE CARS';
-        generateCarsButton.className = 'generate';
+        generateCarsButton.className = 'generate_button';
 
         panelWrapper.append(raceButton);
         panelWrapper.append(resetButton);
