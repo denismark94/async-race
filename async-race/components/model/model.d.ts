@@ -6,6 +6,12 @@ declare class Model {
     constructor();
     start(): void;
     addListeners(): void;
-    assignCarListeners(carElement: HTMLDivElement): void;
+    assignCarListeners(carWrapper: HTMLDivElement): void;
+    create(): void;
+    update(): void;
+    generate(numberOfCars: number): void;
+    remove(carWrapper: HTMLDivElement): void;
+    select(carWrapper: HTMLDivElement): void;
+    animateCar(car: SVGElement): void;
 }
 export default Model;
