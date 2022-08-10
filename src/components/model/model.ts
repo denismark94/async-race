@@ -76,6 +76,15 @@ class Model {
         startButton.addEventListener('click', () => {
             this.animateCar(carImage);
         });
+
+        const resetButton = <HTMLButtonElement>carWrapper.querySelector('.reset_btn');
+        resetButton.addEventListener('click', () => {
+            this.resetAnimation(carImage);
+        });
+    }
+
+    resetAnimation(car: SVGElement) {
+        car.style.left = '0';
     }
 
     create() {
