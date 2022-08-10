@@ -7,6 +7,7 @@ declare class Model {
     start(): void;
     addListeners(): void;
     assignCarListeners(carWrapper: HTMLDivElement): void;
+    resetAnimation(car: SVGElement): void;
     create(): void;
     update(): void;
     generate(numberOfCars: number): void;
