@@ -7,9 +7,9 @@ class Winners {
         const winnersWrapper = document.createElement('div');
         winnersWrapper.className = 'winners_wrapper';
         const h2 = document.createElement('h2');
-        h2.textContent = 'Winners (num)';
+        h2.textContent = 'Winners (0)';
         const h3 = document.createElement('h3');
-        h3.textContent = 'Page #num';
+        h3.textContent = 'Page #1';
         winnersWrapper.append(h2);
         winnersWrapper.append(h3);
         winnersWrapper.append(this.createTable());
@@ -43,6 +43,8 @@ class Winners {
             row.insertCell().textContent = `${winner.wins}`;
             row.insertCell().textContent = `${winner.time}`;
         });
+        const h2 = <HTMLHRElement>document.querySelector('.winners_wrapper h2');
+        h2.textContent = `Winners (${data.length})`;
     }
 
     adjustCar(svg: SVGElement, color: string) {

@@ -13,9 +13,9 @@ class Track {
         garageWrapper.className = 'garage_wrapper';
 
         const h2 = document.createElement('h2');
-        h2.textContent = 'Garage (num)';
+        h2.textContent = 'Garage (0)';
         const h3 = document.createElement('h3');
-        h3.textContent = 'Page #num';
+        h3.textContent = 'Page #1';
 
         const trackWrapper = document.createElement('div');
         trackWrapper.className = 'track_wrapper';
@@ -48,13 +48,15 @@ class Track {
         this.amount = data.length;
         const trackWrapper = <HTMLDivElement>document.querySelector('.track_wrapper');
         trackWrapper.innerHTML = '';
-        data.forEach((car) => {
-            const carElement = this.generateCar(car);
-            addListeners(carElement);
-            trackWrapper.append(carElement);
-        });
-        while (this.currentPage * 7 >= this.amount) {
-            this.page -= 1;
+        if (data.length) {
+            data.forEach((car) => {
+                const carElement = this.generateCar(car);
+                addListeners(carElement);
+                trackWrapper.append(carElement);
+            });
+            while (this.currentPage * 7 >= this.amount) {
+                this.page -= 1;
+            }
         }
         this.showCurrentPage();
     }
