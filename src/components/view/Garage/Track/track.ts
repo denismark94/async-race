@@ -105,6 +105,7 @@ class Track {
         startButton.className = 'start_btn';
         const resetButton = document.createElement('button');
         resetButton.textContent = 'RESET';
+        resetButton.className = 'reset_btn';
         engineControlWrapper.append(startButton);
         engineControlWrapper.append(resetButton);
         const lineWrapper = document.createElement('div');
