@@ -1,0 +1,11 @@
+.winners_table th {
+    background-color: lightblue;
+    font-weight: normal;
+    font-family: Arial, Helvetica, sans-serif;
+    padding: 20px;
+}
+
+.winners_table td {
+    color: white;
+    font-family: Arial, Helvetica, sans-serif;
+}
